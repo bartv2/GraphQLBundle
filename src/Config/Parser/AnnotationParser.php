@@ -493,7 +493,7 @@ class AnnotationParser implements PreParserInterface
 
         if (null === $fieldAnnotation) {
             if (null !== $accessAnnotation || null !== $publicAnnotation) {
-                throw new InvalidArgumentException(sprintf('The annotations "@Access" and/or "@Visible" defined on "%s" are only usable in addition of annotation "@Field"', $reflector->getName()));
+                throw new InvalidArgumentException(sprintf('The annotations "@Access" and/or "@IsPublic" defined on "%s" are only usable in addition of annotation "@Field"', $reflector->getName()));
             }
 
             return [];
@@ -581,7 +581,7 @@ class AnnotationParser implements PreParserInterface
                             throw new InvalidArgumentException(sprintf('The attribute "type" on GraphQL annotation "@%s" is missing on method "%s" and cannot be auto-guessed from type hint "%s"', $fieldAnnotationName, $reflector->getName(), (string) $reflector->getReturnType()));
                         }
                     } else {
-                        throw new InvalidArgumentException(sprintf('The attribute "type" on GraphQL annotation "@%s" is missing on method "%s" and cannot be auto-guessed as there is not return type hint.', $fieldAnnotationName, $reflector->getName()));
+                        throw new InvalidArgumentException(sprintf('The attribute "type" on GraphQL annotation "@%s" is missing on method "%s" and cannot be auto-guessed as there is no return type hint.', $fieldAnnotationName, $reflector->getName()));
                     }
                 } else {
                     try {

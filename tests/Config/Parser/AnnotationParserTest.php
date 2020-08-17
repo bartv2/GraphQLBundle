@@ -430,7 +430,7 @@ class AnnotationParserTest extends TestCase
             $this->fail('Missing type hint for auto-guessed return type should have raise an exception');
         } catch (Exception $e) {
             $this->assertInstanceOf(InvalidArgumentException::class, $e);
-            $this->assertMatchesRegularExpression('/cannot be auto-guessed as there is not return type hint./', $e->getPrevious()->getMessage());
+            $this->assertMatchesRegularExpression('/cannot be auto-guessed as there is no return type hint./', $e->getPrevious()->getMessage());
         }
     }
 
@@ -478,7 +478,7 @@ class AnnotationParserTest extends TestCase
             $this->fail('@Access annotation without a @Field annotation should raise an exception');
         } catch (Exception $e) {
             $this->assertInstanceOf(InvalidArgumentException::class, $e);
-            $this->assertMatchesRegularExpression('/The annotations "@Access" and\/or "@Visible" defined on "field"/', $e->getPrevious()->getMessage());
+            $this->assertMatchesRegularExpression('/The annotations "@Access" and\/or "@IsPublic" defined on "field"/', $e->getPrevious()->getMessage());
         }
     }
 
